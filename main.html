@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Numérique - Enzo Scavone</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Fond clair pour la lisibilité */
+            color: #333; /* Texte sombre */
+        }
+
+        header {
+            transition: height 1s, padding 1s;
+            height: 200px; /* Hauteur par défaut */
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            background-color: #888;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre douce */
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background-image: url('img/fond3.jpg'); */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: 0;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px; /* Taille plus grande pour le nom */
+            font-weight: bold;
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin: 20px 0; /* Ajuster la marge */
+        }
+
+        nav {
+            z-index: 1;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        nav a {
+            font-size: 30px; /* Taille de police pour les liens */
+            margin: 0 40px; /* Augmenter la marge horizontale pour plus d'espace */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #007bff; /* Couleur d'accent au survol */
+        }
+
+        main {
+            display: grid;
+            gap: 2em;
+            padding: 20px; /* Ajout de padding autour du main */
+        }
+
+        section {
+            padding: 50px;
+            margin: 50px;
+            background-color: #ececec; /* Fond blanc pour les sections */
+            border-radius: 15px;
+            box-shadow: 0.5em 0.5em 1em #bebebe, -0.5em -0.5em 1em #fff;
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em; /* Taille de police pour les titres des sections */
+            color: #333; /* Couleur sombre pour les titres */
+            margin-bottom: 10px; /* Espace sous le titre */
+        }
+
+        section p{
+            font-size: 1.5em;
+        padding: 1em 3em;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .skills-container {
+            display: flex;
+            overflow-x: auto; /* Permet le défilement horizontal */
+            padding: 10px 0;
+            scroll-behavior: smooth; /* Défilement fluide */
+            scrollbar-width: thin; /* Pour Firefox */
+            border-radius: 15px;
+            justify-content: space-evenly;
+        }
+
+        
+        .skill {
+            width: 100px; /* Largeur fixe pour chaque image */
+            height: 100px; /* Hauteur fixe pour chaque image */
+            margin: 0 10px; /* Espace entre les images */
+            object-fit: contain; /* Garde la proportion de l'image */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #515457;
+            color: #ffffff;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .competences{
+            background-color: #bebebe;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                margin: 10px 0; /* Marge ajustée pour les petits écrans */
+            }
+        }
+        .formation-container {
+    display: flex; /* Utilisation de flexbox pour un espacement uniforme */
+    justify-content: space-evenly; /* Espacement uniforme entre les cases */
+    flex-wrap: wrap; /* Permet aux cases de passer à la ligne si nécessaire */
+    padding: 20px 0; /* Espacement autour de la grille */
+}
+
+.formation-item {
+    background-color: #ececec; /* Fond des cases */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    box-shadow: 0.5em 0.5em 1em #bebebe, -0.5em -0.5em 1em #fff; /* Ombre douce */
+    transition: transform 0.3s; /* Animation au survol */
+    flex: 1 1 300px; /* Permet aux cases de prendre une largeur minimum */
+    margin: 10px; /* Marge entre les cases */
+}
+
+.formation-item:hover {
+    transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+
+.formation-item h3 {
+    margin: 0 0 10px; /* Marge sous le titre */
+}
+
+.formation-item p {
+    margin: 0; /* Aucun espacement par défaut */
+}
+
+.desc {
+    font-size: large;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.projets-container {
+    display: flex; /* Utilisation de flexbox */
+    flex-direction: column; /* Aligner les projets verticalement */
+    align-items: center; /* Centrer les projets */
+    padding: 20px 0; /* Espacement autour de la section */
+}
+
+.projet-item {
+    background-color: #ececec; /* Fond des cases de projet */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    box-shadow: 0.5em 0.5em 1em #bebebe, -0.5em -0.5em 1em #fff; /* Ombre douce */
+    transition: transform 0.3s; /* Animation au survol */
+    width: 80%; /* Largeur des projets pour s'adapter à la section */
+    margin: 10px 0; /* Marge verticale entre les projets */
+    text-align: center; /* Centrer le texte */
+}
+
+.projet-image {
+    width: 100%; /* Largeur de l'image à 100% pour remplir la case */
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    border-radius: 10px; /* Coins arrondis pour l'image */
+    margin-top: 10px; /* Espace au-dessus de l'image */
+}
+
+.projet-item:hover {
+    transform: scale(1.05); /* Effet d'agrandissement au survol */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Enzo Scavone</h1>
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#presentation">Présentation</a>
+            <a href="#competences">Compétences</a>
+            <a href="#formation">Formation</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="presentation">
+            <h2>Présentation personnelle</h2>
+            <p>Je m'appelle Enzo Scavone et je suis actuellement en 2ème année de BUT Informatique à l'IUT de Lille. Depuis mon plus jeune âge, je suis extrêmement curieux et passionné par le monde de l'informatique. Cette passion m'a poussé à explorer divers domaines de la technologie et à développer mes compétences. Grâce aux projets entrepris durant ma formation, j'ai pu acquérir une expérience précieuse qui m'a permis d'approfondir mes connaissances et de mettre en pratique mes compétences techniques. Je suis enthousiaste à l'idée de continuer à apprendre et à relever de nouveaux défis dans le domaine de l'informatique.</p>
+        </section>
+    
+        <section id="competences">
+            <h2>Compétences</h2>
+            <p>
+                Au cours de ma formation, j'ai pu apprendre et approfondir mes compétences en programmation, ainsi qu'en administration système et en administration de bases de données. Cette expérience m'a permis de développer une compréhension solide des technologies et de leurs applications dans le monde professionnel.</p>
+            <div class="skills-container">
+                <img src="img/java.png" alt="Java" class="skill">
+                <img src="img/javafx.png" alt="Javafx" class="skill">
+                <img src="img/c.png" alt="C" class="skill">
+                <img src="img/tomcat.png" alt="tomcat" class="skill">
+                <img src="img/html.png" alt="HTML" class="skill">
+                <img src="img/css.png" alt="CSS" class="skill">
+                <img src="img/postGreSQL.png" alt="SQL" class="skill">
+                <img src="img/windows.png" alt="windows" class="skill">
+                <img src="img/linux.png" alt="linux" class="skill">
+                <img src="img/git.png" alt="git" class="skill">
+            </div>
+        </section>
+    
+        <section id="formation">
+            <h2>Formation</h2>
+            <div class="formation-container">
+                <div class="formation-item">
+                    <h3>2015 - 2019</h3>
+                    <p>Enseignement Secondaire</p>
+                    <p class = "desc">Collège Fenelon de Cambrai</p>
+                </div>
+                
+                <div class="formation-item">
+                    <h3>2019 - 2022</h3>
+                    <p>Baccalauréat Scientifique</p>
+                    <p class = "desc">Lycée Paul Duez Cambrai</p>
+                    
+                </div>
+                
+                <div class="formation-item">
+                    <h3>2022 - Présent</h3>
+                    <p>But Informatique</p>
+                    <p class = "desc">IUT de Lille</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets">
+            <h2>Projets</h2>
+            <div class="projets-container">
+                <div class="projet-item">
+                    <h3>ClassiGit</h3>
+                    <p>Le projet a pour objectif de développer un outil permettant de charger, afficher et classifier des données en utilisant l'algorithme k-NN (k plus proches voisins). Ce projet offre une interface graphique permettant de visualiser des jeux de données sous forme de nuages de points.</p>
+                    <p class="desc">Technologies utilisées : java,javafx</p>
+                    <img src="img/ClassiGit.png" alt="ClassiGit" class="projet-image">
+                </div>
+                <div class="projet-item">
+                    <h3>Ragnarok</h3>
+                    <p>Ragnarok est un MMORPG se déroulant au Valhalla, le paradis des Vikings. Incarnez un personnage unique et partez à l'aventure pour vaincre les Dieux du Valhalla tout en surmontant des défis variés. Explorez des environnements riches, participez à des quêtes épiques et formez des alliances avec d'autres joueurs pour triompher ensemble.
+
+                    </p>
+                    <p class="desc">Technologies utilisées : java,ascii art,</p>
+                    <img src="img/Ragnarok.jpeg" alt="Site E-commerce" class="projet-image"> 
+                </div>
+            </div>
+        </section>
+        
+    
+        <section id="contact">
+            <h2>Contact</h2>
+            <div style="display: flex; justify-content: space-around; align-items: center;">
+                <div style="text-align: center;">
+                    <a href="img/Scavone_CV.pdf" target="_blank">
+                        <img src="img/cv.png" alt="Mon CV" style="width: 50px; height: 50px;">
+                    </a>
+                    <p>Curriculum vitæ</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="img/email.png" alt="Email" style="width: 50px; height: 50px;">
+                    <p><a href="mailto:enzo.scavone.etu@univ-lille.fr">enzo.scavone.etu@univ-lille.fr</a></p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="img/tel.png" alt="Téléphone" style="width: 50px; height: 50px;">
+                    <p>+06 30 70 57 20</p>
+                </div>
+               
+            </div>
+        </section>
+
+        
+    <footer>
+        <!-- <p>&copy; 2024 Enzo Scavone. Tous droits réservés.</p> -->
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
