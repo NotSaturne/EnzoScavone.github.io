@@ -5,121 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Numérique - Enzo Scavone</title>
     <style>
+        /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212; /* Fond sombre */
-            color: #e0e0e0; /* Texte clair */
+            background-color: #121212;
+            color: #fff;
+            transition: background-color 0.3s ease;
         }
 
-        header {
-            background-color: #1f1f1f;
-            padding: 20px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        header h1 {
-            font-size: 2.5em;
+        h1, h2, h3, p {
             margin: 0;
-            color: #ffffff;
+            padding: 0;
+            color: #fff;
         }
 
-        nav {
-            margin-top: 10px;
-        }
-
-        nav a {
-            color: #ffffff;
+        a {
+            color: #fff;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
             transition: color 0.3s;
         }
 
+        a:hover {
+            color: #ff4081;
+        }
+
+        /* Header */
+        header {
+            height: 300px;
+            background: linear-gradient(135deg, #3e3e3e, #1a1a1a);
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: bold;
+            z-index: 2;
+            margin-top: 50px;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('your-image.jpg'); /* Optional background image */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        nav a {
+            font-size: 1.2rem;
+            margin: 0 30px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
         nav a:hover {
-            color: #bb86fc;
+            transform: translateY(-5px);
+            background-color: #ff4081;
+        }
+
+        /* Main Section */
+        main {
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-radius: 30px;
+            margin: -50px auto 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 250px; /* Ajout de la marge pour éviter que le contenu soit caché par le header */
         }
 
         section {
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #1f1f1f;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
+            margin-top: 30px;
         }
 
         section h2 {
-            font-size: 1.8em;
-            color: #bb86fc;
-            border-bottom: 2px solid #bb86fc;
-            padding-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            position: relative;
         }
 
-        section p {
-            font-size: 1.2em;
-            line-height: 1.6;
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 5px;
+            background-color: #ff4081;
+            border-radius: 50px;
         }
 
-        .skills-container, .formation-container, .projets-container {
+        .skills-container {
             display: flex;
-            gap: 20px;
             flex-wrap: wrap;
+            gap: 20px;
             justify-content: center;
         }
 
-        .skill, .formation-item, .projet-item {
-            background-color: #292929;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .skill:hover, .formation-item:hover, .projet-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .skill img, .projet-image {
-            max-width: 100px;
-            max-height: 100px;
+        .skill {
+            width: 80px;
+            height: 80px;
             object-fit: contain;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .skill:hover {
+            transform: scale(1.1);
+        }
+
+        .formation-container, .projets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
         }
 
         .formation-item, .projet-item {
-            width: calc(100% - 40px);
-            max-width: 400px;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+            text-align: center;
         }
 
+        .formation-item:hover, .projet-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .formation-item h3, .projet-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ff4081;
+        }
+
+        .projet-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 10px 0;
-            background-color: #1f1f1f;
-            color: #bbbbbb;
-            margin-top: 20px;
+            padding: 30px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 50px;
+            border-radius: 15px;
         }
 
-        footer a {
-            color: #bb86fc;
-            text-decoration: none;
+        footer p {
+            font-size: 1.2rem;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
 
-        @media (max-width: 600px) {
+            nav {
+                position: static;
+                text-align: center;
+            }
+
             nav a {
-                font-size: 1em;
-                margin: 0 10px;
+                margin: 10px 0;
+            }
+
+            .skills-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -128,6 +216,7 @@
     <header>
         <h1>Enzo Scavone</h1>
         <nav>
+            <a href="#accueil">Accueil</a>
             <a href="#presentation">Présentation</a>
             <a href="#competences">Compétences</a>
             <a href="#formation">Formation</a>
@@ -137,42 +226,59 @@
     </header>
     <main>
         <section id="presentation">
-            <h2>Présentation</h2>
-            <p>Je m'appelle Enzo Scavone, étudiant en informatique, passionné par la technologie et motivé à relever de nouveaux défis.</p>
+            <h2>Présentation personnelle</h2>
+            <p>Je m'appelle Enzo Scavone et je suis actuellement en 2ème année de BUT Informatique à l'IUT de Lille...</p>
         </section>
+    
         <section id="competences">
             <h2>Compétences</h2>
+            <p>Voici un aperçu de mes compétences en programmation et en administration système.</p>
             <div class="skills-container">
                 <img src="img/java.png" alt="Java" class="skill">
+                <img src="img/javafx.png" alt="JavaFX" class="skill">
+                <img src="img/c.png" alt="C" class="skill">
                 <img src="img/html.png" alt="HTML" class="skill">
                 <img src="img/css.png" alt="CSS" class="skill">
             </div>
         </section>
+    
         <section id="formation">
             <h2>Formation</h2>
             <div class="formation-container">
                 <div class="formation-item">
+                    <h3>2015 - 2019</h3>
+                    <p>Collège Fenelon de Cambrai</p>
+                </div>
+                <div class="formation-item">
+                    <h3>2019 - 2022</h3>
+                    <p>Baccalauréat Scientifique</p>
+                </div>
+                <div class="formation-item">
                     <h3>2022 - Présent</h3>
-                    <p>BUT Informatique</p>
+                    <p>But Informatique, IUT de Lille</p>
                 </div>
             </div>
         </section>
+
         <section id="projets">
             <h2>Projets</h2>
             <div class="projets-container">
                 <div class="projet-item">
                     <h3>ClassiGit</h3>
-                    <p>Outil de classification de données utilisant k-NN avec Java.</p>
+                    <p>Un outil pour classifier des données avec l'algorithme k-NN.</p>
+                    <img src="img/ClassiGit.png" alt="ClassiGit" class="projet-image">
+                </div>
+                <div class="projet-item">
+                    <h3>Ragnarok</h3>
+                    <p>Un MMORPG inspiré du Valhalla avec des défis variés.</p>
+                    <img src="img/Ragnarok.jpeg" alt="Ragnarok" class="projet-image">
                 </div>
             </div>
         </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email : <a href="mailto:enzo.scavone.etu@univ-lille.fr">enzo.scavone.etu@univ-lille.fr</a></p>
-        </section>
     </main>
+
     <footer>
-        &copy; 2024 Enzo Scavone. Designed with ❤️.
+        <p>Enzo Scavone - Tous droits réservés 2024</p>
     </footer>
 </body>
 </html>
